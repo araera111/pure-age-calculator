@@ -37,7 +37,7 @@ example2
 const from = new Date('1991-10-15');
 const to = new Date('2022-11-15');
 const format:UnitType = 'years';
-const result = getAgePure(from,to, format);
+const result = getAgePureFormat(from,to, format);
 /*
   result = 31
 */
