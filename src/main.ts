@@ -1,5 +1,6 @@
-import dayjs, { UnitType } from 'dayjs';
+import dayjs, { UnitTypeLong, UnitTypeLongPlural, UnitTypeShort } from 'dayjs';
 import { isNil } from 'ramda';
+export type UnitType = UnitTypeLong | UnitTypeLongPlural | UnitTypeShort;
 const calcDiff = (from: Date, to: Date, format?: UnitType) => {
 	const dayjsFrom = dayjs(from);
 	const dayjsTo = dayjs(to);
