@@ -1,4 +1,5 @@
 import dayjs, { UnitType } from 'dayjs';
+import * as E from 'fp-ts/Either';
 
 const calcDiff = (from: Date, to: Date) => {
 	const dayjsFrom = dayjs(from);
@@ -27,4 +28,10 @@ export const getAgePureFormat = (fromDate: Date, toDate: Date, format: UnitType)
 	if (!(toDate instanceof Date)) throw new Error('toDate is Invalid date.');
 	if (dayjs(fromDate).isAfter(toDate)) throw new Error('toDate is dated earlier than fromDate.');
 	return calcDiffFormat(fromDate, toDate, format);
+};
+export const getAgePureEither = (fromDate: Date, toDate: Date) => {
+	if (!(fromDate instanceof Date)) return E.left('fromDate is Invalid date.');
+	if (!(toDate instanceof Date)) return E.left('toDate is Invalid date.');
+	if (dayjs(fromDate).isAfter(toDate)) return E.left('toDate is dated earlier than fromDate.');
+	return E.right(calcDiff(fromDate, toDate));
 };
